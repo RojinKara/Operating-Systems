@@ -235,4 +235,21 @@ public class TaskA {
 
         return output;
     }
+
+    private static List<Integer> parseField(String field) {
+        List<Integer> intFields = new ArrayList<>();
+        String[] rawFields = field.split(",");
+        for (String part : rawFields) {
+            if (part.contains("-")) {
+                String[] range = part.split("-");
+
+                for (int i = Integer.parseInt(range[0]); i <= Integer.parseInt(range[1]); i++) {
+                    intFields.add(i);
+                }
+            } else {
+                intFields.add(Integer.parseInt(part));
+            }
+        }
+        return intFields;
+    }
 }
