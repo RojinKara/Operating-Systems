@@ -1,8 +1,8 @@
 package taskB;
 
 /**
- * This class is used as a node for the linked list That is, we start linking
- * blocks together
+ * This class is used as a node for the linked list
+ * That is, we start linking blocks together
  */
 public class BlockNode {
 

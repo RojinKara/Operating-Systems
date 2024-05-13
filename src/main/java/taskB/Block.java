@@ -9,7 +9,6 @@ public class Block {
 
 
     // Process and size of memory hole
-    // Look at the end of this file for the definition of Hole
     private Process proc;
     private Hole hole;
 
@@ -23,7 +22,8 @@ public class Block {
     /**
      * Constructor for Block
      * @param proc Process, null if available.
-     * @param hole used to show or give size of memory for this current block
+     * @param hole used to show or give size of
+     * memory for this current block
      */
     public Block(Process proc, Hole hole) {
         this.proc = proc;
@@ -47,8 +47,10 @@ public class Block {
     }
 
     /**
-     * This method checks to see if the current Process proc wanting to be placed can be placed at this block.
-     * If the block is available and the proc is allocating and the bytes to be placed are within this blocks size
+     * This method checks to see if the current Process proc wanting
+     * to be placed can be placed at this block.
+     * If the block is available and the proc is allocating and the bytes
+     * to be placed are within this blocks size
      * then it can be placed.
      *
      * @param proc Process to check if can be placed at this block
@@ -84,7 +86,8 @@ public class Block {
     }
 
     /**
-     * This method displays the current block and what is allocated to it if it is allocated.
+     * This method displays the current block and what
+     * is allocated to it if it is allocated.
      */
     public void displayBlock() {
 

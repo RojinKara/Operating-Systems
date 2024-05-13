@@ -54,8 +54,10 @@ public class TaskB {
             if (proc.isAllocating()) {
                 boolean placed = manager.bestFitInsert(proc);
                 if (!placed) {
-                    System.out.println("Request " + proc.getReference_number() + " failed at allocating " + proc.getArgument() + " bytes.");
-                    System.out.println("External Fragmentation is " + manager.externalFragmentation() + " bytes.");
+                    System.out.println("Request " + proc.getReference_number()
+                            + " failed at allocating " + proc.getArgument() + " bytes.");
+                    System.out.println("External Fragmentation is "
+                            + manager.externalFragmentation() + " bytes.");
                     manager.printBlocks();
                     manager.compactMemory();
                     System.out.println("-------After Compaction ------");
@@ -63,8 +65,10 @@ public class TaskB {
 
                     boolean retry = manager.bestFitInsert(proc);
                     if (!retry) {
-                        System.out.println("Request " + proc.getReference_number() + " failed at allocating " + proc.getArgument() + " bytes.");
-                        System.out.println("External Fragmentation is " + manager.externalFragmentation() + " bytes.");
+                        System.out.println("Request " + proc.getReference_number()
+                                + " failed at allocating " + proc.getArgument() + " bytes.");
+                        System.out.println("External Fragmentation is "
+                                + manager.externalFragmentation() + " bytes.");
                         return;
                     }
                 }
@@ -75,6 +79,11 @@ public class TaskB {
         System.out.println("Success");
         manager.printBlocks();
     }
+
+    /**
+     * Main function for memory management.
+     * @param args command line arguments
+     */
 
     public static void main(String[] args) {
         try {

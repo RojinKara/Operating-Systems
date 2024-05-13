@@ -29,6 +29,8 @@ public class Hole {
         this.end = end;
     }
 
+    // Getters for the start and end of the hole
+
     public int getStart() {
         return this.start;
     }
@@ -54,6 +56,4 @@ public class Hole {
         this.start = start;
         this.end = end;
     }
-
-
 }

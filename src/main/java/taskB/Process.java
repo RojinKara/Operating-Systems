@@ -27,6 +27,8 @@ public class Process {
         this.argument = argument;
     }
 
+    // Getters for the private variables
+
     public int getReference_number() {
         return this.reference_number;
     }

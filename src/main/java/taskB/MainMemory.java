@@ -2,8 +2,8 @@ package taskB;
 
 /**
  * This class main purpose is to be a linked list for the current blocks of
- * memory that are placed or free for the simulation of First Fit, Best Fit, and
- * Worst Fit memory allocation methods.
+ * memory that are placed or free for the simulation of First Fit, Best Fit,
+ * and Worst Fit memory allocation methods.
  */
 public class MainMemory {
 
@@ -39,8 +39,8 @@ public class MainMemory {
     }
 
     /**
-     * Inserts Block at start of linked list, best to be used to initialize first
-     * node.
+     * Inserts Block at start of linked list,
+     * best to be used to initialize first node.
      *
      * @param block Block of memory to insert.
      */
@@ -57,10 +57,10 @@ public class MainMemory {
     }
 
     /**
-     * Best fit insert, this method goes through the linked list finding the
-     * best place it can insert the block into memory.
+     * Best fit insert, this method goes through the linked list finding
+     * the best place it can insert the block into memory.
      *
-     * @param proc to insert into memory
+     * @param proc Process to be placed in memory.
      * @return True if successfully placed, false if it failed.
      */
     public boolean bestFitInsert(Process proc) {
@@ -123,6 +123,7 @@ public class MainMemory {
 
                         //create a new block with the rest of memory we don't need
                         //notice curr.getBlock().getHole().getEnd() was changed
+
                         if (curr.getBlock().getHole().getEnd() < end) {
                             BlockNode newBlock = new BlockNode(
                                     new Block(null, new Hole(curr.getBlock().getHole().getEnd() + 1, end)),
@@ -207,6 +208,12 @@ public class MainMemory {
         }
     }
 
+    /**
+     * This method goes through the blocks of memory and de-allocates the block for
+     * the provided process_number
+     *
+     */
+
     public void compactMemory() {
         int memoryUsage = 0;
         BlockNode previousNode = null;
@@ -214,7 +221,8 @@ public class MainMemory {
 
         while (currentNode != null) {
             if (currentNode.getBlock().getProcess() != null) {
-                currentNode.getBlock().getHole().setRange(memoryUsage, memoryUsage + currentNode.getBlock().getSize() - 1);
+                currentNode.getBlock().getHole().setRange(memoryUsage, memoryUsage
+                        + currentNode.getBlock().getSize() - 1);
                 memoryUsage += currentNode.getBlock().getSize();
                 previousNode = currentNode;
             } else {

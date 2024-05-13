@@ -6,7 +6,20 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
+/**
+ * Task A: Implementing cat, cut, sort, uniq and wc commands.
+ * The program reads the user's input and executes the specified command.
+ * The program supports the use of pipes to pass the output of
+ * one command as input to another command.
+ */
+
 public class TaskA {
+
+    /**
+     * Main method to run the program.
+     * @param args Command line arguments
+     * @throws IOException If an I/O error occurs
+     */
 
     public static void main(String[] args) throws IOException {
 
@@ -19,6 +32,8 @@ public class TaskA {
 
         BufferedReader console = new BufferedReader(new InputStreamReader(System.in));
 
+        // Loop to keep the program running
+
         while (true) {
             System.out.print(">> ");
             commandLine = console.readLine().trim();
@@ -29,9 +44,22 @@ public class TaskA {
             String[] individualCommands = commandLine.split("\\|");
             List<String> pipe = new ArrayList<>();
 
+            // Loop through each command in the pipeline
+
             for (int i = 0; i < individualCommands.length; i++) {
-                List<String> tokens = new ArrayList<>(Arrays.asList(individualCommands[i].trim().split("\\s+")));
+                List<String> tokens = new ArrayList<>(Arrays.asList(individualCommands[i]
+                        .trim().split("\\s+")));
                 String command = tokens.remove(0);
+
+                // Switch statement to determine which command to run
+
+                /**
+                 * cat command: Reads the file and outputs the contents.
+                 * cut command: Extracts the specified fields from the input.
+                 * sort command: Sorts the input.
+                 * uniq command: Removes duplicate lines from the input.
+                 * wc command: Counts the number of lines, words and bytes in the input.
+                 */
 
                 switch (command) {
                     case "cat":
@@ -97,6 +125,15 @@ public class TaskA {
         }
     }
 
+    // Methods for each command
+
+    /**
+     * cat command: Reads the file and outputs the contents.
+     * @param args Command line arguments
+     * @return List of strings containing the file contents
+     * @throws Exception If an I/O error occurs
+     */
+
     private static List<String> cat(List<String> args) throws Exception {
         List<String> output = new ArrayList<>();
 
@@ -109,6 +146,14 @@ public class TaskA {
 
         return output;
     }
+
+    /**
+     * cut command: Extracts the specified fields from the input.
+     * @param args Command line arguments
+     * @param input List of strings containing the input
+     * @return List of strings containing the extracted fields
+     * @throws Exception If an I/O error occurs
+     */
 
     private static List<String> cut(List<String> args, List<String> input) throws Exception {
         int fieldIndex = args.indexOf("-f");
@@ -156,6 +201,14 @@ public class TaskA {
         return output;
     }
 
+    /**
+     * sort command: Sorts the input based on alphabetical order.
+     * @param args Command line arguments
+     * @param input List of strings containing the input
+     * @return List of strings containing the sorted input
+     * @throws Exception If an I/O error occurs
+     */
+
     private static List<String> sort(List<String> args, List<String> input) throws Exception {
         List<String> lines = new ArrayList<>();
 
@@ -175,6 +228,14 @@ public class TaskA {
 
         return lines;
     }
+
+    /**
+     * uniq command: Removes duplicate lines from the input.
+     * @param args Command line arguments
+     * @param input List of strings containing the input
+     * @return List of strings containing the unique lines
+     * @throws Exception If an I/O error occurs
+     */
 
     private static List<String> uniq(List<String> args, List<String> input) throws Exception {
         List<String> output = new ArrayList<>();
@@ -202,6 +263,14 @@ public class TaskA {
 
         return output;
     }
+
+    /**
+     * wc command: Counts the number of lines, words and bytes in the input.
+     * @param args Command line arguments
+     * @param input List of strings containing the input
+     * @return List of strings containing the line, word and byte count
+     * @throws IOException If an I/O error occurs
+     */
 
     private static List<String> wc(List<String> args, List<String> input) throws IOException {
         boolean lFlag = args.remove("-l");
@@ -235,6 +304,12 @@ public class TaskA {
 
         return output;
     }
+
+    /**
+     * Parses the field argument for the cut command.
+     * @param field The field argument
+     * @return List of integers containing the fields
+     */
 
     private static List<Integer> parseField(String field) {
         List<Integer> intFields = new ArrayList<>();
