@@ -1,5 +1,3 @@
-∗ Java-based project consisting of 3 different tasks.
-
 ∗ Task-A: ”cut, cat, sort, uniq and wc” commands are implemented, supporting the use of pipes to pass the
 output of one command as input to another command.
 
